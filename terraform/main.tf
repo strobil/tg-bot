@@ -1,7 +1,7 @@
 provider "google" {
-  version = "3.51.0"
-  project = "<PROJECT_ID>"
-  region  = "<REGION>"
+  version = "4.51.0"
+  project = var.project_id
+  region  = var.region
 }
 
 resource "google_compute_instance" "telegram_bot" {
@@ -21,10 +21,10 @@ resource "google_compute_instance" "telegram_bot" {
     inline = [
       "sudo apt-get update",
       "sudo apt-get install -y python3-pip",
-      "pip3 install python-telegram-bot",
       "sudo apt-get install -y git",
-      "git clone https://github.com/<GITHUB_USERNAME>/<TELEGRAM_BOT_REPO>.git",
-      "cd <TELEGRAM_BOT_REPO>",
+      "git clone https://github.com/strobil/tg-bot.git",
+      "cd gt-bot",
+      "pip3 install -r requirements.txt",
       "python3 bot.py &"
     ]
   }
